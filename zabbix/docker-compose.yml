@@ -20,7 +20,7 @@ services:
     container_name: zabbix_server
     network_mode: host
     environment:
-      - DB_SERVER_HOST=172.16.194.16
+      - DB_SERVER_HOST=${ETH0_IP}
       - MYSQL_USER=zabbix
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=zabbix
@@ -44,8 +44,8 @@ services:
     container_name: zabbix_web
     network_mode: host
     environment:
-      - ZBX_SERVER_HOST=172.16.194.16
-      - DB_SERVER_HOST=172.16.194.16
+      - ZBX_SERVER_HOST=${ETH0_IP}
+      - DB_SERVER_HOST=${ETH0_IP}
       - MYSQL_USER=zabbix
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=zabbix
