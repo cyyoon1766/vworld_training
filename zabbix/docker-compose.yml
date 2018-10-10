@@ -59,6 +59,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - /opt/vworld_training/zabbix/font:/usr/share/fonts/ttf-dejavu/:Z
     ports:
       - '80:80'
     depends_on:
