@@ -1,0 +1,9 @@
+version: '2'
+services:
+  fluentd:
+    image: "ycy1766/fluentd-osc:0.1.1"
+    hostname: "fluentd"
+    container_name: "fluentd"
+    volumes:
+      - /opt/vworld_training/fluentd/config/fluent.conf:/fluentd/etc/fluent.conf:Z 
+    network_mode: host
