@@ -1,0 +1,16 @@
+---
+- name: time sync(rdate) playbook
+  hosts: webservers
+  become: true
+  remote_user: root
+
+  tasks:
+  - name: install rdate
+    yum: name=rdate state=present
+
+  - name: install rdate
+    shell: rdate -s time.bora.net
+
+
+
+ 

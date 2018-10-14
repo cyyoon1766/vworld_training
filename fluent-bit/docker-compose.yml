@@ -1,0 +1,10 @@
+version: '2'
+services:
+  fluentd:
+    image: "docker.io/fluent/fluent-bit:latest"
+    hostname: "fluent-bit"
+    container_name: "fluent-bit"
+    volumes:
+      - /var/log/messages:/var/log/messages:Z
+      - /opt/vworld_training/fluent-bit/config/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:Z
+    network_mode: host
