@@ -1,0 +1,19 @@
+---
+- name: Install custom httpd
+  become: true
+  hosts: webservers
+
+  tasks:
+  - name: Install httpd
+    yum: name=httpd state=present update_cache=yes
+
+  - name: ensure httpd started
+    service: name=httpd state=started enabled=yes
+
+  - name: copy http connfiguration
+    copy: src=/opt/vworld_training/ansible/httpd.conf dest=/etc/httpd/conf/httpd.conf mode=644
+    notify: restart httpd
+ 
+  handlers:
+  - name: restart httpd
+    service: name=httpd state=restarted
