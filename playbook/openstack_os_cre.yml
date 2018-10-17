@@ -1,0 +1,31 @@
+---
+- name: Test Openstack os_server
+  become: true
+  hosts: deploy
+
+  tasks:
+  - name: create boot volume from image
+    os_volume:
+      cloud: vworld_test_openstack
+      state: present
+      size: 10
+      display_name: test_cirros_vol_10
+      image: cirros
+      timeout: 300
+      wait: yes
+
+  - name: launch an instance
+    os_server:
+      cloud: vworld_test_openstack
+      key_name: mykey
+      timeout: 300
+      flavor: m1.test
+      security_groups: default
+      nics:
+        - net-id: d9e98ed0-6f19-42c1-9e28-b73ac198a002
+      name: vworld_test_cirros_vm
+      boot_volume: test_cirros_vol_10
+
+
+
+
