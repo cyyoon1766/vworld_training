@@ -1,16 +1,15 @@
 ---
-- name: Test Openstack os_server
+- name: Test Openstack os_volume
   become: true
   hosts: 192.168.40.103
 
   tasks:
-  - name: create boot volume from image
+  - name: create volume 
     os_volume:
       cloud: demo_openstack
       state: present
-      size: 10
-      display_name: test_cirros_vol_10
-      image: cirros
+      size: 1
+      display_name: test_1
       timeout: 300
       wait: yes
 
